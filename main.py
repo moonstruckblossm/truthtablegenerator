@@ -6,6 +6,7 @@ there isn't too much functionality!
 '''
 
 from handleEq import *
+from utilityFunctions import *
 
 def main():
     #intro and information
@@ -26,4 +27,11 @@ def main():
     print()
 
     #actually getting the equation lmao?
-    equation = input("Input a logical equation using the variables A, B, C, and D!")
+
+    #for now we can assume that the number of vars the user snters is accurate to the yknow ACTUAL NUMBER
+    equation = input("Input a logical equation using capital variables such as A, B, C, D, etc: ")
+
+    #finds the amount of variables in the equation
+    print(findGreatest(equation), "variables detected!")
+
+main()
