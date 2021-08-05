@@ -21,23 +21,40 @@ def evaluateExp(numVar, equation):
     #replace all characters that are CAPITAL LETTERS (in ALPHABET) with dict[that letter]
     for i in range(len(eqList)):
         if 65 <= ord(eqList[i]) <= 90:
-            eqList[i] = "varDict["+eqList[i]+"]"
+            eqList[i] = "varDict['"+eqList[i]+"']"
     print(eqList)
+
+    dictList = []
 
     #put the string back together
     newEqString = "".join(eqList)
     print(newEqString)
 
+
+    #ACTUALLY PRINTING THE THING LOL
+    print("\033[1;95;40m♡♡ YOUR TRUTH TABLE ♡♡\033[0m")
+
+    print()
+
+    #header string
+    header = "\033[4;95;40m"
+    for i in alphSlice[::-1]:
+        header += i+"  "
+    header += "Result\033[0m"
+
+    print(header)
+
     #for each number in the number of lines
     for i in range(numLines):
-        print("line number: ", i)
         #check each num in the num of variables to see if it's time to alternate?
         for j in range(len(alphSlice)):
-            print("doing",i, "div by", 2**j)
             if i%(2**j) == 0:
-                print(i, "divisible by", 2**j)
-                varDict[alphSlice[j]] = not varDict[alphSlice[j]]
-        print(varDict)
+                dictPiece = {alphSlice[j] : not varDict[alphSlice[j]]}
+                varDict.update(dictPiece)
+        print(eval(newEqString))
+
+
+
 
 
     #my brain is freaking massive
