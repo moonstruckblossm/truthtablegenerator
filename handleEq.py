@@ -10,6 +10,11 @@ def evaluateExp(numVar, equation):
     for i in range(numVar):
         varDict[ALPHABET[i]] = False
     print(varDict)
+
+    #slice the alphabet upto the last letter we're using and reverse it
+    alphSlice = ALPHABET[0:numVar]
+    alphSlice = alphSlice[::-1]
+
     #break the equation up into a list since strings aren't mutable
     eqList = list(equation)
 
@@ -23,6 +28,16 @@ def evaluateExp(numVar, equation):
     newEqString = "".join(eqList)
     print(newEqString)
 
-    #
+    #for each number in the number of lines
+    for i in range(numLines):
+        print("line number: ", i)
+        #check each num in the num of variables to see if it's time to alternate?
+        for j in range(len(alphSlice)):
+            print("doing",i, "div by", 2**j)
+            if i%(2**j) == 0:
+                print(i, "divisible by", 2**j)
+                varDict[alphSlice[j]] = not varDict[alphSlice[j]]
+        print(varDict)
+
 
     #my brain is freaking massive
